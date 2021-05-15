@@ -76,15 +76,15 @@ newArr()
 
 function chooseRandom(newPassword, num = 1) {
   const res = [];
-    for(let i = 0; i < num; ){
+    for(let i = 0; i < num; i++){
     const random = Math.floor(Math.random() * newPassword.length);
       if(res.indexOf(newPassword[random]) !== -1){
       continue;
         };
     res.push(newPassword[random]);
-    i++;
+
     };
-  return res;
+  return res.join("");
 };
 console.log(chooseRandom(newPassword, passwordLength));
 
