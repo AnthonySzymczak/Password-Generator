@@ -74,19 +74,22 @@ newArr()
  console.log(newPassword.length)
  console.log(results)
 
+
 function chooseRandom(newPassword, num = 1) {
+  console.log(num)
+  console.log(newPassword)
   const res = [];
     for(let i = 0; i < num; i++){
-    const random = Math.floor(Math.random() * newPassword.length);
-      if(res.indexOf(newPassword[random]) !== -1){
-      continue;
-        };
+    let random = Math.floor(Math.random() * newPassword.length);
+   //   if(newPassword[random]) !== -1){
+     // continue;
+    //    };
     res.push(newPassword[random]);
 
     };
   return res.join("");
 };
-console.log(chooseRandom(newPassword, passwordLength));
+chooseRandom(newPassword, passwordLength);
 
 var generateBtn = document.querySelector("#generate");
 // Write password to the #password input
