@@ -1,14 +1,3 @@
-// Assignment Code
-var generateBtn = document.querySelector("#generate");
-
-// Write password to the #password input
-function writePassword() {
-  var password = generatePassword();
-  var passwordText = document.querySelector("#password");
-
-  passwordText.value = password;
-
-}
 
 
 // Variable declaration
@@ -103,7 +92,9 @@ var generateBtn = document.querySelector("#generate");
 // Write password to the #password input
 
     function writePassword() {
+
       document.querySelector("#password").innerHTML = chooseRandom(newPassword, passwordLength);
+
     }
 
 // Add event listener to generate button
