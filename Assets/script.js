@@ -9,7 +9,7 @@ const numbers = [1,2,3,4,5,6,7,8,9,0];
 // we use let here because it isnt a set variable such as const
 
 let password = [];
-
+let newPassword;
 
 let passwordLength = parseInt(prompt("How many characters would you like your password to be? minimum 8 maximum 128"));
 let lowerCaseInput = prompt("would you like to use LOWER CASE letters in your password? (type yes or no)").toLowerCase();
