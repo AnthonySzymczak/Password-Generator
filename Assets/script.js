@@ -26,35 +26,56 @@ let passwordLength = parseInt(prompt("How many characters would you like your pa
 let lowerCaseInput = prompt("would you like to use LOWER CASE letters in your password? (type yes or no)").toLowerCase();
 let upperCaseInput = prompt("would you like to use UPPER CASE letters in your password? (type yes or no)").toLowerCase();
 let specialCharInput = prompt("would you like to use special characters in your password? (type yes or no)").toLowerCase();
+let numbersInput = prompt("Would you like to use NUMBERS in your password? (type yes or no)").toLowerCase();
 console.log(passwordLength)
 
 //function array declaration
 
 function newArr() {
-if (lowerCaseInput === "yes" && upperCaseInput === "yes" && specialCharInput === "yes") {
-newPassword = password.concat(lowerCase, upperCase, specialChar)
+if (lowerCaseInput === "yes" && upperCaseInput === "yes" && specialCharInput === "yes" && numbersInput === "yes") {
+newPassword = password.concat(lowerCase, upperCase, specialChar, numbers)
 console.log(newPassword)
-} else if (lowerCaseInput === "yes" && upperCaseInput === "yes" && specialCharInput === "no") {
-newPassword = password.concat(lowerCase, upperCase)
+
+} else if (lowerCaseInput === "yes" && upperCaseInput === "yes" && specialCharInput === "yes" && numbersInput === "no") {
+  newPassword = password.concat(lowerCase, upperCase, specialChar)
+  console.log(newPassword)
+} else if (lowerCaseInput === "yes" && upperCaseInput === "yes" && specialCharInput === "no" && numbersInput === "yes") {
+newPassword = password.concat(lowerCase, upperCase, numbers)
 console.log(newPassword)
-} else if (lowerCaseInput === "yes" && upperCaseInput === "no" && specialCharInput === "no") {
-newPassword = password.concat(lowerCase)
+} else if (lowerCaseInput === "yes" && upperCaseInput === "no" && specialCharInput === "yes" && numbersInput === "yes") {
+newPassword = password.concat(lowerCase, specialChar ,numbers)
 console.log(newPassword)
-} else if (lowerCaseInput === "no" && upperCaseInput === "yes" && specialCharInput === "yes") {
+} else if (lowerCaseInput === "no" && upperCaseInput === "yes" && specialCharInput === "yes"  && numbersInput === "yes") {
+newPassword = password.concat(upperCase, specialChar, numbers)
+console.log(newPassword)
+} else if (lowerCaseInput === "yes" && upperCaseInput === "no" && specialCharInput === "no"  && numbersInput === "yes") { 
+  newPassword = password.concat(lowerCase, numbers)
+  console.log(newPassword)  
+} else if (lowerCaseInput === "no" && upperCaseInput === "yes" && specialCharInput === "no"  && numbersInput === "yes") { 
+newPassword = password.concat(upperCase, numbers)
+console.log(newPassword)
+} else if (lowerCaseInput === "no" && upperCaseInput === "no" && specialCharInput === "yes"  && numbersInput === "yes") {
+newPassword = password.concat(specialChar, numbers)
+console.log(newPassword)
+} else if (lowerCaseInput === "no" && upperCaseInput === "yes" && specialCharInput === "yes"  && numbersInput === "no") {
 newPassword = password.concat(upperCase, specialChar)
 console.log(newPassword)
-} else if (lowerCaseInput === "no" && upperCaseInput === "yes" && specialCharInput === "no") {
-newPassword = password.concat(upperCase)
-console.log(newPassword)
-} else if (lowerCaseInput === "no" && upperCaseInput === "no" && specialCharInput === "yes") {
-newPassword = password.concat(specialChar)
-console.log(newPassword)
-} else if (lowerCaseInput === "no" && upperCaseInput === "yes" && specialCharInput === "yes") {
-newPassword = password.concat(upperCase, specialChar)
-console.log(newPassword)
-} else if (lowerCaseInput === "yes" && upperCaseInput === "no" && specialCharInput === "yes") {
+} else if (lowerCaseInput === "yes" && upperCaseInput === "no" && specialCharInput === "yes" && numbersInput === "no") {
 newPassword = password.concat(lowerCase, specialChar)
 console.log(newPassword)
+} else if (lowerCaseInput === "no" && upperCaseInput === "no" && specialCharInput === "no" && numbersInput === "yes") {
+  newPassword = password.concat(numbers)
+  console.log(newPassword)
+} else if (lowerCaseInput === "yes" && upperCaseInput === "no" && specialCharInput === "no" && numbersInput === "no") {
+  newPassword = password.concat(lowerCase)
+  console.log(newPassword)
+} else if (lowerCaseInput === "no" && upperCaseInput === "no" && specialCharInput === "no" && numbersInput === "no") {
+  newPassword = password.concat(specialChar)
+  console.log(newPassword)
+} else if (lowerCaseInput === "no" && upperCaseInput === "yes" && specialCharInput === "no" && numbersInput === "no") {
+  newPassword = password.concat(upperCase)
+  console.log(newPassword)
+
 };
 }
 newArr()
@@ -65,23 +86,25 @@ newArr()
  console.log(results)
 
 function chooseRandom(newPassword, num = 1) {
-const res = [];
-for(let i = 0; i < num; ){
-const random = Math.floor(Math.random() * newPassword.length);
-if(res.indexOf(newPassword[random]) !== -1){
-continue;
-};
-res.push(newPassword[random]);
-i++;
-};
-return res;
+  const res = [];
+    for(let i = 0; i < num; ){
+    const random = Math.floor(Math.random() * newPassword.length);
+      if(res.indexOf(newPassword[random]) !== -1){
+      continue;
+        };
+    res.push(newPassword[random]);
+    i++;
+    };
+  return res;
 };
 console.log(chooseRandom(newPassword, passwordLength));
 
 var generateBtn = document.querySelector("#generate");
 // Write password to the #password input
-function writePassword() {
-document.querySelector("#password").innerHTML = chooseRandom(newPassword, passwordLength);
-}
+
+    function writePassword() {
+      document.querySelector("#password").innerHTML = chooseRandom(newPassword, passwordLength);
+    }
+
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
